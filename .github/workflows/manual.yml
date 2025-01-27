@@ -2,6 +2,14 @@ name: Manual Workflow Test
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target Environment'
+        required: true
+        default: 'dev'
+      version:
+        description: 'App version'
+        required: true
 
 jobs:
   example_job:
@@ -9,5 +17,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Run Script
-        run: echo "This is manually triggered."
+      - name: Deploy
+        run: |
+          echo "Deploying version ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }}
