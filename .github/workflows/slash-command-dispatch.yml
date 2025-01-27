@@ -9,4 +9,6 @@ jobs:
       - name: Slash Command Dispatch
         uses: peter-evans/slash-command-dispatch@v4
         with:
-          commands: example
+          commands: |
+            example
+            rollback

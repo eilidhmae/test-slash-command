@@ -1,7 +1,13 @@
 name: rollback-command
 on:
-  repository_dispatch:
+  workflow_dispatch:
     types: [rollback-command]
+    inputs:
+      commit-ref:
+        description: 'target rollback commit'
+        required: true
+        default: ${{ github.ref }}
+
 jobs:
   rollback:
     runs-on: ubuntu-latest
@@ -9,8 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}
-          ref: ${{ github.event.inputs.commit_ref }}
+          ref: ${{ github.event.inputs.commit-ref }}
       - name: Rollback
         run: |
-          echo "Will deploy ${{ github.event.inputs.commit_ref }}
+          echo "Will deploy ${{ github.event.inputs.commit-ref }}
