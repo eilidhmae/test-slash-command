@@ -19,7 +19,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.client_payload.github.event.inputs.sha }}
+          ref: ${{ github.event.client_payload.slash_command.args.named.sha }}
       - name: Deploy
         run: |
-          echo "Deploying build ${{ github.event.client_payload.github.event.inputs.sha }} to ${{ github.event.client_payload.github.event.inputs.environment }}"
+          echo "Deploying build ${{ github.event.client_payload.slash_command.args.named.sha }} to ${{ github.event.client_payload.slash_command.args.named.environment }}"
