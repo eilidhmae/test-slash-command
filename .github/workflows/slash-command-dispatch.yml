@@ -2,6 +2,14 @@ name: Slash Command Dispatch
 on:
   issue_comment:
     types: [created]
+    inputs:
+      sha:
+        description: 'Target commit hash'
+        required: true
+      environment:
+        description: 'Target commit environment'
+        required: true
+        default: 'dev'
 jobs:
   rollback:
     runs-on: ubuntu-latest
