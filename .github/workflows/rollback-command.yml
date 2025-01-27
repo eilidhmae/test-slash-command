@@ -3,10 +3,10 @@ on:
   workflow_dispatch:
     types: [rollback-command]
     inputs:
-      commit-ref:
+      commit-sha:
         description: 'target rollback commit'
         required: true
-        default: ${{ github.ref }}
+        default: ${{ github.sha }}
 
 jobs:
   rollback:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.commit-ref }}
+          ref: ${{ github.event.inputs.commit-sha }}
       - name: Rollback
         run: |
-          echo "Will deploy ${{ github.event.inputs.commit-ref }}
+          echo "Will deploy ${{ github.event.inputs.commit-sha }}"
