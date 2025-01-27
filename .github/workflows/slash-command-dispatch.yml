@@ -3,10 +3,10 @@ on:
   issue_comment:
     types: [created]
 jobs:
-  slashCommandDispatch:
+  rollback:
     runs-on: ubuntu-latest
     steps:
-      - name: Slash Command Dispatch
+      - name: Slash Command Dispatch Rollback
         uses: peter-evans/slash-command-dispatch@v4
         with:
           token: ${{ secrets.PAT }}
