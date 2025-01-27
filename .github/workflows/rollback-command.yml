@@ -1,0 +1,16 @@
+name: rollback-command
+on:
+  repository_dispatch:
+    types: [rollback-command]
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          ref: ${{ github.event.inputs.commit_ref }}
+      - name: Rollback
+        run: |
+          echo "Will deploy ${{ github.event.inputs.commit_ref }}
