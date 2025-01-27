@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          sha: ${{ github.event.inputs.sha }}
       - name: Deploy
         run: |
           echo "Deploying build ${{ github.event.inputs.sha }} to ${{ github.event.inputs.environment }}"
