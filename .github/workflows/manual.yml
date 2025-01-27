@@ -1,0 +1,13 @@
+name: Manual Workflow Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Run Script
+        run: echo "This is manually triggered."
